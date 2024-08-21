@@ -822,7 +822,7 @@ header.de_header_2.smaller .info {
 }
 header.header-mobile #mainmenu > li ul.mega{
 	visibility: visible;
-	opacity: 1;
+	opacity: 0;         <!- made it 0 from 1 ................................................................. -->
 }
 header:not(.header-mobile) #mainmenu > li:hover ul.mega{
 	height:auto;
