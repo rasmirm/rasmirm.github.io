@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashmi's Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .book-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            max-width: 800px;
+        }
+
+        .book {
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 120px;
+            height: 210px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .book img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .book p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .book:hover {
+            transform: scale(1.05);
+        }
+
+        #pdf-viewer {
+            display: none;
+            width: 100%;
+            height: 90vh;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .pdf-canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        canvas {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            display: none; /* Hide buttons initially */
+            justify-content: center; /* Center align buttons */
+            gap: 1%; /* Space between buttons */
+            padding: 10px;
+            background-color: #f0f0f0;
+            width: 100%;
+        }
+
+        .top-bar button {
+            background-color: lightgrey; /* Light grey background */
+            color: black; /* Black text */
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .top-bar button:hover {
+            background-color: #d3d3d3;
+        }
+
+        .mode-button {
+            background-color: #2196F3;
+        }
+
+        .mode-button:hover {
+            background-color: #1976D2;
+        }
+
+        /* Minimalistic Dropdown Container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Button */
+        .dropdown .dropbtn {
+            background-color: lightgrey;
+            color: black;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Minimalistic Dropdown Content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Show dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Dropdown content buttons */
+        .dropdown-content button {
+            background-color: #f9f9f9;
+            color: black;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #d3d3d3;
+        }
+        .home-link {
+            font-size: 14px;
+            font-family: 'YourFont', sans-serif;
+            text-decoration: none;
+            color: inherit;
+            margin-left: 100px;
+            font-weight: bold;
+        }
+
+        .home-link:hover {
+            color: #149ddd;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header id="topbanner" style="background-color: rgba(76, 80, 16, 0);">
+        <nav style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
+            <div style="margin: 0; font-size: 14px; font-family: 'YourFont', sans-serif; font-weight: bold;">My Bookshelf</div>
+            <a href="../index.html" class="home-link">
+                <div>Back Home</div>
+            </a>
+        </nav>
+    </header>
+    
+    
+
+    
+    <div class="book-container">
+        <div class="book" onclick="openPDF('Joyo Kanji.pdf')">
+            <img src="Cover1.jpg" alt="Book 1">
+            <p>Joyo Kanji.pdf</p>
+        </div>
+        <div class="book" onclick="openPDF('Kyoiku kanji.pdf')">
+            <img src="Cover2.jpg" alt="Book 2">
+            <p>Kyoiku kanji.pdf</p>
+        </div>
+        <div class="book" onclick="openPDF('The Complete Guide to Japanese Kanji.pdf')">
+            <img src="Cover3.jpg" alt="Book 3">
+            <p>The Complete Guide to Japanese Kanji.pdf</p>
+        </div>
+        <div class="book" onclick="openPDF('List of 1000 Kanji.pdf')">
+            <img src="Cover4.jpg" alt="Book 4">
+            <p>List of 1000 Kanji.pdf</p>
+        </div>
+        <div class="book" onclick="openPDF('List of 1000 Kanji.pdf')">
+            <img src="Cover5.jpg" alt="Book 5">
+            <p>List of 1000 Kanji.pdf</p>
+        </div>
+        <div class="book" onclick="openPDF('List of 1000 Kanji.pdf')">
+            <img src="Cover6.jpg" alt="Book 6">
+            <p>List of 1000 Kanji.pdf</p>
+        </div>
+    </div>
+
+    <div id="pdf-viewer">
+        <div class="top-bar">
+            <button onclick="goHome()">Book-Shelf</button>
+            <button onclick="goToBookmark()">Bookmark</button>
+            <button onclick="clearHighlights()">Highlight</button>
+            
+            <!-- Minimalistic Style Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn">Style</button>
+                <div class="dropdown-content">
+                    <button onclick="setMonochrome()">Monochrome</button>
+                    <button onclick="setSepia()">Sepia</button>
+                    <button onclick="setOriginal()">Original</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pdf-canvas-container">
+            <canvas id="pdf-canvas"></canvas>
+            <canvas id="pdf-canvas-2" style="display: none;"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <script>
+        let pdfDoc = null,
+            pageNum = 1,
+            scale = 1,
+            canvas = document.getElementById('pdf-canvas'),
+            canvas2 = document.getElementById('pdf-canvas-2'),
+            ctx = canvas.getContext('2d'),
+            ctx2 = canvas2.getContext('2d'),
+            doublePageView = false;
+
+        function openPDF(pdfUrl) {
+            document.querySelector('h1').style.display = 'none'; // Hide the title
+            document.querySelector('.book-container').style.display = 'none'; // Hide book list
+            document.getElementById('pdf-viewer').style.display = 'flex'; // Show the PDF viewer
+            document.querySelector('.top-bar').style.display = 'flex'; // Show the buttons
+            loadPDF(pdfUrl);
+        }
+
+        function loadPDF(pdfUrl) {
+            pdfjsLib.getDocument(pdfUrl).promise.then(function(pdfDoc_) {
+                pdfDoc = pdfDoc_;
+                pageNum = 1; // Reset to the first page
+                renderPage(pageNum);
+            });
+        }
+
+        function renderPage(num) {
+            pdfDoc.getPage(num).then(function(page) {
+                const viewport = page.getViewport({ scale: 1 });
+                const containerWidth = canvas.parentElement.offsetWidth;
+                const containerHeight = canvas.parentElement.offsetHeight;
+
+                const scaleX = containerWidth / viewport.width;
+                const scaleY = containerHeight / viewport.height;
+                scale = Math.min(scaleX, scaleY); // Fit PDF by either width or height
+
+                const adjustedViewport = page.getViewport({ scale: scale });
+
+                canvas.height = adjustedViewport.height;
+                canvas.width = adjustedViewport.width;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: adjustedViewport
+                };
+
+                page.render(renderContext);
+            });
+        }
+
+        function nextPage() {
+            if (pdfDoc && pageNum < pdfDoc.numPages) {
+                pageNum++;
+                renderPage(pageNum);
+            }
+        }
+
+        function prevPage() {
+            if (pdfDoc && pageNum > 1) {
+                pageNum--;
+                renderPage(pageNum);
+            }
+        }
+
+        function toggleView() {
+            doublePageView = !doublePageView;
+            renderPage(pageNum);
+        }
+
+        function setMonochrome() {
+            canvas.style.filter = "grayscale(100%)";
+            canvas2.style.filter = "grayscale(100%)";
+        }
+
+        function setSepia() {
+            canvas.style.filter = "sepia(100%)";
+            canvas2.style.filter = "sepia(100%)";
+        }
+
+        function setOriginal() {
+            canvas.style.filter = "none";
+            canvas2.style.filter = "none";
+        }
+
+        function goToBookmark() {
+            const currentPDF = localStorage.getItem('currentPDF');
+            const bookmarkedPage = localStorage.getItem(currentPDF);
+            if (bookmarkedPage) {
+                pageNum = parseInt(bookmarkedPage, 10);
+                renderPage(pageNum);
+            } else {
+                alert('No bookmark found!');
+            }
+        }
+
+        function goHome() {
+            document.querySelector('h1').style.display = 'block'; // Show the title
+            document.querySelector('.book-container').style.display = 'grid'; // Show book list
+            document.getElementById('pdf-viewer').style.display = 'none'; // Hide the PDF viewer
+            document.querySelector('.top-bar').style.display = 'none'; // Hide the buttons
+            pdfDoc = null; // Reset pdfDoc
+        }
+
+        function clearHighlights() {
+            alert('Highlights cleared!');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') {
+                nextPage();
+            } else if (event.key === 'ArrowLeft') {
+                prevPage();
+            }
+        });
+    </script>
+</body>
+</html>
