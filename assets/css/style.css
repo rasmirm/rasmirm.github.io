@@ -549,9 +549,10 @@ section {
   display: inline-block;
   /*padding: 10px 15px 8px 15px;*/
   padding: 0px 15px 0px 15px;
-  text-transform: lowercase;
+  text-transform: uppercase;
   color: #000000;
-  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   transition: all 0.3s ease-in-out;
   
 }
@@ -1104,4 +1105,54 @@ section {
     width: auto;
     padding-right: 20px 15px;
   }
+}
+
+
+/* Make GLightbox overlay fully opaque white */
+.goverlay {
+    background: #ffffff !important;
+}
+
+.glightbox-container {
+    background: #ffffff !important;
+}
+   
+
+
+/* Remove shadow from GLightbox image wrapper and image */
+.glightbox-container,
+.glightbox-container .gslide,
+.glightbox-container .gslide img {
+    box-shadow: none !important;
+}
+
+/* Make background fully opaque white */
+.glightbox-overlay {
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+
+
+
+
+/* Make overlay fully opaque white */
+.glightbox-overlay {
+    background: #fff !important;
+    opacity: 1 !important;
+}
+
+/* Remove shadow around the image wrapper */
+.glightbox-container .gslide {
+    box-shadow: none !important;
+}
+
+/* Remove shadow on the image itself */
+.glightbox-container .gslide img {
+    box-shadow: none !important;
+}
+
+/* Remove any pseudo-element shadows */
+.glightbox-container .gslide::before,
+.glightbox-container .gslide::after {
+    box-shadow: none !important;
 }
