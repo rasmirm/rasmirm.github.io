@@ -367,13 +367,13 @@
 
 .glightbox-mobile .glightbox-container .gslide-desc .desc-more {
   color: #fff;
-  opacity: 0.4;
+  opacity: 1;
 }
 
 .gdesc-open .gslide-media {
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
-  opacity: 0.4;
+  opacity: 1;
 }
 
 .gdesc-open .gdesc-inner {
@@ -430,8 +430,9 @@
   position: fixed;
   top: -1px;
   left: 0;
-  background: #000;
-  will-change: opacity;
+  /* background: #000; */
+  background: rgba(255, 255, 255, 0.9); /* white with 90% opacity */
+  /* will-change: opacity; */
 }
 
 .glightbox-mobile .goverlay {
@@ -476,6 +477,8 @@
 .gclose.disabled {
   opacity: 0.1;
 }
+
+
 
 .gprev .garrow,
 .gnext .garrow,
@@ -852,6 +855,7 @@ iframe.wait-autoplay {
     -webkit-box-ordinal-group: 1;
     -ms-flex-order: 0;
     order: 0;
+    background: rgba(255, 255, 255, 0.9); /* optional, ensures container also has white background */
   }
   .glightbox-container .ginner-container.desc-top .gslide-image,
                 .glightbox-container .ginner-container.desc-top .gslide-image img {
