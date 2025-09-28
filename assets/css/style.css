@@ -551,8 +551,8 @@ section {
   padding: 0px 15px 0px 15px;
   text-transform: uppercase;
   color: #000000;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  /* margin-top: 50px;
+  margin-bottom: 50px; */
   transition: all 0.3s ease-in-out;
   
 }
