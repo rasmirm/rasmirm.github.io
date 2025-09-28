@@ -94,11 +94,12 @@
         #close-about {
             position: absolute;
             top: 20px;
-            left: 20px;
-            font-size: 24px;
+            left: 50%; 
+            font-size: 30px;
             cursor: pointer;
             color: #000;
         }
+        
 
         /* Optional: About link */
         #open-about {
@@ -177,15 +178,16 @@
                 <!-- About panel -->
                 <div id="about-panel">
                     <span id="close-about">&times;</span>
-                    <br><br>
+                    <br><br><br>
                     <h5>ABOUT</h5> <br>
-                    <p>I am Rashmi Ranjan Mohanty, trained as an architect and passionate about art, architecture, design, and technology.</p>
+                    <p>I am Rashmi Ranjan Mohanty, an architect, passionate about art, architecture, design, and technology.</p>
                     <p>Studied at College of Engineering and Technology, Bhubaneswar</p>
-                    <p>Currently living in Tokyo...</p>  <br>
+                    <p>Currently living in Tokyo...</p> <br>
+                    <p>Contact me at: rasmirm@gmail.com</p>
                     <div class="contact-icons" style="display: flex; gap: 15px; align-items: center;">
-                        <a href="mailto:rasmirm@gmail.com" target="_blank">
+                        <!-- <a href="mailto:rasmirm@gmail.com" target="_blank">
                             <img src="images/icons/gmail.png" alt="Email" style="width:24px; height:24px;">
-                        </a>
+                        </a> -->
                         <a href="https://www.linkedin.com/in/rashmi-ranjan-mohanty/" target="_blank">
                             <img src="images/icons/linkedin.png" alt="LinkedIn" style="width:24px; height:24px;">
                         </a>
@@ -196,23 +198,30 @@
                             <img src="images/icons/github.png" alt="Github" style="width:24px; height:24px;">
                         </a>
                     </div>
+                    <br><p>Thanks for visiting !</p>
                 </div>
                 
             </section>
 
 
 <!-- PORTFOLIO -->
-            <section id="section-portfoliox" class="portfolio" style="margin: 0; padding: 0;">
+            <section id="section-portfoliox" class="portfolio" style="margin: 0; padding: 0;">  
+                <span style="color: black;">
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100px;">
+                    <h4 style="color: black; margin: 0;">PORTFOLIO</h4>
+                    </div>
+                </span>
                 <div class="container" style="min-height: 100vh;">
-        
                 <div class="row" data-aos="fade-up" style="margin: 0; padding: 0;">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters" style="margin: 0; padding: 0;">
-                            <li data-filter="*" class="filter-active">ALL</li>
-                            <li data-filter=".filter-app">WORK</li>
-                            <li data-filter=".filter-card">ENTRIES</li>
-                            <li data-filter=".filter-web">SKETCHES</li>
-                            <li data-filter=".filter-expt">PARAMETRIC</li>
+                            <div style="margin-top: 10px; margin-bottom: 50px;">
+                                <li data-filter="*" class="filter-active">ALL</li>
+                                <li data-filter=".filter-app">WORK</li>
+                                <li data-filter=".filter-card">ENTRIES</li>
+                                <li data-filter=".filter-web">SKETCHES</li>
+                                <li data-filter=".filter-expt">PARAMETRIC</li>
+                            </div>
                         </ul>
                     </div>
                 </div>
